@@ -4,7 +4,9 @@
 	var largePayload = [];
 	var results = "";
 	var run = 0;
+	var gaToken;
 	
+	// Change this to modifiy the number of runs of each test
 	var runs = [ 
 		smallTest, smallTest, smallTest, smallTest, smallTest,
 		smallTest, smallTest, smallTest, smallTest, smallTest,
@@ -41,7 +43,9 @@
 			var time2 = new Date().getTime() - result.startTime;
 			results += title  + ": " + time2 + " milliseconds</br>";
 			$("#result").html(results); 
-			//ga.event("sin|bay", small|med|large, 
+			if (gaToken) {
+				_gaq.push(['_trackEvent', window.location.hostname, title, time2]);
+			}
 			run += 1;
 			zapRun();
 		});
@@ -54,17 +58,32 @@
 		for (i = 0; i < 3072; mediumPayload[i++] = Math.random()*255) {} 	// 60k
 		for (i = 0; i < 51500; largePayload[i++] = Math.random()*255) {}	// 1MB
 		
-		// Get the next server in the zap loop
-		$.get("/nextzap", function(result) {
+		// load the zap config items
+		$.get("/zapconfig", function(result) {
 			nextServer = result.server;
-			nextPort = result.port;			
+			nextPort = result.port;		
+			gaToken = result.gaToken;
+			if (gaToken) initGoogleAnalytics(gaToken);
+
+			if (!window.location.search) {
+				$("#start").css("visibility", "visible");
+			} else {
+				// a query string is a signal that we are not the first in the zap loop so
+				// run the tests automatically. Its on the first that the user must choose.
+				zapRun();
+			}			
 		});
-		
-		if (!window.location.search) {
-			$("#start").css("visibility", "visible");
-		} else {
-			// a query string is a signal that we are not the first in the zap loop so
-			// run the tests automatically. Its on the first that the user must choose.
-			zapRun();
-		}
 	});
+	//UA-32857811-1
+	function initGoogleAnalytics(gaToken) {
+alert("about to configure GA wiht: " + gaToken);
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', gaToken]);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	}

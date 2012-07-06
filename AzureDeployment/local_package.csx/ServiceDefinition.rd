@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="WebLatencyZapperSing" generation="1" functional="0" release="0" Id="92eb672a-5292-4046-9350-83c1a2591040" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
+<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="WebLatencyZapperSing" generation="1" functional="0" release="0" Id="23958eb3-8326-496a-8c15-de7dd816aeda" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
   <groups>
     <group name="WebLatencyZapperSingGroup" generation="1" functional="0" release="0">
       <componentports>
@@ -57,9 +57,9 @@
     </group>
   </groups>
   <implements>
-    <implementation Id="2634b90d-17af-4f12-bf4e-b5384b87b37b" ref="Microsoft.RedDog.Contract\ServiceContract\WebLatencyZapperSingContract@ServiceDefinition">
+    <implementation Id="bd44a37d-0974-4207-a075-ccff74438bf4" ref="Microsoft.RedDog.Contract\ServiceContract\WebLatencyZapperSingContract@ServiceDefinition">
       <interfacereferences>
-        <interfaceReference Id="88d8e0c3-54ab-4454-b7db-5e3f7f6787cd" ref="Microsoft.RedDog.Contract\Interface\WebLatencyZapperWebRole:Endpoint1@ServiceDefinition">
+        <interfaceReference Id="ffe4c867-a156-4fca-a27a-ce6859cf6ada" ref="Microsoft.RedDog.Contract\Interface\WebLatencyZapperWebRole:Endpoint1@ServiceDefinition">
           <inPort>
             <inPortMoniker name="/WebLatencyZapperSing/WebLatencyZapperSingGroup/WebLatencyZapperWebRole:Endpoint1" />
           </inPort>

@@ -5,6 +5,8 @@
 	var results = "";
 	var run = 0;
 	var gaToken;
+        var nextServer;
+	var nextPort;
 	
 	// Change this to modifiy the number of runs of each test
 	var runs = [ 
@@ -23,7 +25,10 @@
 		} else {
 			// redirect to the next test, or show the end
 			run = 0;
-			
+			$.get("/zapconfig", function(result) {
+			nextServer = result.server;
+			nextPort = result.port;		
+			gaToken = result.gaToken;});
 			if (nextServer == "EOL") {
 				alert("We are all zapped out. Thank you for helping us to make business life easier.");
 			} else {

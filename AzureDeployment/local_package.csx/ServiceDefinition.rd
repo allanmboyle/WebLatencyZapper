@@ -1,32 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AzureDeployment" generation="1" functional="0" release="0" Id="08ce854a-c8a7-4fb4-8e47-9dcc333164fb" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
+<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="WebLatencyZapperSing" generation="1" functional="0" release="0" Id="92eb672a-5292-4046-9350-83c1a2591040" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
   <groups>
-    <group name="AzureDeploymentGroup" generation="1" functional="0" release="0">
+    <group name="WebLatencyZapperSingGroup" generation="1" functional="0" release="0">
       <componentports>
         <inPort name="WebLatencyZapperWebRole:Endpoint1" protocol="http">
           <inToChannel>
-            <lBChannelMoniker name="/AzureDeployment/AzureDeploymentGroup/LB:WebLatencyZapperWebRole:Endpoint1" />
+            <lBChannelMoniker name="/WebLatencyZapperSing/WebLatencyZapperSingGroup/LB:WebLatencyZapperWebRole:Endpoint1" />
           </inToChannel>
         </inPort>
       </componentports>
       <settings>
         <aCS name="WebLatencyZapperWebRoleInstances" defaultValue="[1,1,1]">
           <maps>
-            <mapMoniker name="/AzureDeployment/AzureDeploymentGroup/MapWebLatencyZapperWebRoleInstances" />
+            <mapMoniker name="/WebLatencyZapperSing/WebLatencyZapperSingGroup/MapWebLatencyZapperWebRoleInstances" />
           </maps>
         </aCS>
       </settings>
       <channels>
         <lBChannel name="LB:WebLatencyZapperWebRole:Endpoint1">
           <toPorts>
-            <inPortMoniker name="/AzureDeployment/AzureDeploymentGroup/WebLatencyZapperWebRole/Endpoint1" />
+            <inPortMoniker name="/WebLatencyZapperSing/WebLatencyZapperSingGroup/WebLatencyZapperWebRole/Endpoint1" />
           </toPorts>
         </lBChannel>
       </channels>
       <maps>
         <map name="MapWebLatencyZapperWebRoleInstances" kind="Identity">
           <setting>
-            <sCSPolicyIDMoniker name="/AzureDeployment/AzureDeploymentGroup/WebLatencyZapperWebRoleInstances" />
+            <sCSPolicyIDMoniker name="/WebLatencyZapperSing/WebLatencyZapperSingGroup/WebLatencyZapperWebRoleInstances" />
           </setting>
         </map>
       </maps>
@@ -45,8 +45,8 @@
             </resourcereferences>
           </role>
           <sCSPolicy>
-            <sCSPolicyIDMoniker name="/AzureDeployment/AzureDeploymentGroup/WebLatencyZapperWebRoleInstances" />
-            <sCSPolicyFaultDomainMoniker name="/AzureDeployment/AzureDeploymentGroup/WebLatencyZapperWebRoleFaultDomains" />
+            <sCSPolicyIDMoniker name="/WebLatencyZapperSing/WebLatencyZapperSingGroup/WebLatencyZapperWebRoleInstances" />
+            <sCSPolicyFaultDomainMoniker name="/WebLatencyZapperSing/WebLatencyZapperSingGroup/WebLatencyZapperWebRoleFaultDomains" />
           </sCSPolicy>
         </groupHascomponents>
       </components>
@@ -57,11 +57,11 @@
     </group>
   </groups>
   <implements>
-    <implementation Id="44a33f1c-9f60-432e-8eea-e48aeab7a447" ref="Microsoft.RedDog.Contract\ServiceContract\AzureDeploymentContract@ServiceDefinition">
+    <implementation Id="2634b90d-17af-4f12-bf4e-b5384b87b37b" ref="Microsoft.RedDog.Contract\ServiceContract\WebLatencyZapperSingContract@ServiceDefinition">
       <interfacereferences>
-        <interfaceReference Id="c1ceee49-d22a-4ea2-9598-a9afbdc5d569" ref="Microsoft.RedDog.Contract\Interface\WebLatencyZapperWebRole:Endpoint1@ServiceDefinition">
+        <interfaceReference Id="88d8e0c3-54ab-4454-b7db-5e3f7f6787cd" ref="Microsoft.RedDog.Contract\Interface\WebLatencyZapperWebRole:Endpoint1@ServiceDefinition">
           <inPort>
-            <inPortMoniker name="/AzureDeployment/AzureDeploymentGroup/WebLatencyZapperWebRole:Endpoint1" />
+            <inPortMoniker name="/WebLatencyZapperSing/WebLatencyZapperSingGroup/WebLatencyZapperWebRole:Endpoint1" />
           </inPort>
         </interfaceReference>
       </interfacereferences>

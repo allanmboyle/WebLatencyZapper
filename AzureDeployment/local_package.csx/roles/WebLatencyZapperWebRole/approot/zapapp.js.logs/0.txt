@@ -1,2 +1,3 @@
-Zapper running on port \\.\pipe\2768ce21-25c8-4fd3-adfb-1599be83bb1b
-Next Zapper is http://EOL:EOL
+Zapper running on port \\.\pipe\a738504c-4742-4564-a1bf-d49062686049
+Next Zapper is http://weblatencyzapperbay.cloudapp.net:80
+Not logging to Google Analytics

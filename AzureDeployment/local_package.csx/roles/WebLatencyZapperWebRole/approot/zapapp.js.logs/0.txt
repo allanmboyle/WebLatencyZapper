@@ -1,0 +1,2 @@
+Zapper running on port \\.\pipe\2768ce21-25c8-4fd3-adfb-1599be83bb1b
+Next Zapper is http://EOL:EOL

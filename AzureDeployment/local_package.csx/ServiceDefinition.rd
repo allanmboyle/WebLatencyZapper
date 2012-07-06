@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AzureDeployment" generation="1" functional="0" release="0" Id="2cd37d22-4ac8-4a21-81d6-f58cac35d81d" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
+<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AzureDeployment" generation="1" functional="0" release="0" Id="08ce854a-c8a7-4fb4-8e47-9dcc333164fb" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
   <groups>
     <group name="AzureDeploymentGroup" generation="1" functional="0" release="0">
       <componentports>
@@ -57,9 +57,9 @@
     </group>
   </groups>
   <implements>
-    <implementation Id="2d9fbe5b-f78f-4766-bfb4-c0b9899df910" ref="Microsoft.RedDog.Contract\ServiceContract\AzureDeploymentContract@ServiceDefinition">
+    <implementation Id="44a33f1c-9f60-432e-8eea-e48aeab7a447" ref="Microsoft.RedDog.Contract\ServiceContract\AzureDeploymentContract@ServiceDefinition">
       <interfacereferences>
-        <interfaceReference Id="6070d296-f396-4f4c-9086-85d16e4e0ee4" ref="Microsoft.RedDog.Contract\Interface\WebLatencyZapperWebRole:Endpoint1@ServiceDefinition">
+        <interfaceReference Id="c1ceee49-d22a-4ea2-9598-a9afbdc5d569" ref="Microsoft.RedDog.Contract\Interface\WebLatencyZapperWebRole:Endpoint1@ServiceDefinition">
           <inPort>
             <inPortMoniker name="/AzureDeployment/AzureDeploymentGroup/WebLatencyZapperWebRole:Endpoint1" />
           </inPort>

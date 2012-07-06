@@ -1,0 +1,3 @@
+Zapper running on port \\.\pipe\c2cdb81b-1941-4bab-9ba9-ea27cbf06eee
+Next Zapper is http://EOL:EOL
+Not logging to Google Analytics

@@ -1,12 +1,21 @@
 <html>
 <head>
-	<title>Web Latency Zapper</title>
+	<title>Performance Test Page</title>
 	<script type="text/javascript" src="jquery.min.js"></script> 
 </head>
 <body>
-	<h1> MYOB Bandwidth Tester </h1>
-	<div id="start" style="visibility: hidden">
-		<input type=button value="Start Zapper" onclick="zapRun()" />
+	<h1> MYOB Performance Test Page </h1>
+	<div id="start" style="width: 50%; display: none">
+		Thank you for agreeing to help us tune the performance of the MYOB Live servers. This test
+		will only take one or two minutes to run. Please refrain from using your computer while the
+		test is in progress.</br>
+		<input type=button value="Start Performance Test" onclick="zapRun()" />
+	</div>
+	<div id="during" style="display: none">
+		Half way there, won't be a moment now...
+	</div>
+	<div id="after" style="display: none">
+		The test is now complete. Thank you for helping to make business life easier. 
 	</div>
 	<div id="result">  </div>
 	

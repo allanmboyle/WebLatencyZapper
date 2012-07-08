@@ -10,13 +10,13 @@
  */
 
 // Current port of this server
-SERVER_PORT = process.env.SERVER_PORT || process.env.port || 1337; // to allow running multiple server on the same machine.
+ZAP_PORT = process.env.ZAP_PORT || process.env.port || 1337; // to allow running multiple server on the same machine.
 
 // Name and port of the NEXT server come from the command line. EOL=End of the line
-NEXT_SERVER_NAME = process.env.NEXT_SERVER_NAME || "EOL";
-NEXT_SERVER_PORT = process.env.NEXT_SERVER_PORT || "EOL";
+ZAP_NEXT_SERVER_NAME = process.env.ZAP_NEXT_SERVER_NAME || "EOL";
+ZAP_NEXT_SERVER_PORT = process.env.ZAP_NEXT_SERVER_PORT || "EOL";
 
-GA_TOKEN = process.env.GA_TOKEN;
+ZAP_GA_TOKEN = process.env.ZAP_GA_TOKEN;
 
 // Load the http module to create an http server.
 var express = require('express');
@@ -33,18 +33,16 @@ server.post('/zap', function (request, response) {
 
 // Serve up the public pages
 server.get('/', function (req, res) { res.sendfile(__dirname + '/public/index.html'); });
-server.get('/zapconfig', function (req, res) { res.send(
-	{
-	server: 	NEXT_SERVER_NAME, 
-	port: 		NEXT_SERVER_PORT,
-	gaToken: 	GA_TOKEN
-	}
-)});
+server.get('/zapconfig', function (req, res) { res.send({
+	server: 	ZAP_NEXT_SERVER_NAME, 
+	port: 		ZAP_NEXT_SERVER_PORT,
+	gaToken: 	ZAP_GA_TOKEN
+})});
 	
 // Listen on port 8000, IP defaults to 127.0.0.1
-server.listen(SERVER_PORT);
+server.listen(ZAP_PORT);
 
 // Put a friendly message on the terminal
-console.log("Zapper running on port " + SERVER_PORT);
-console.log("Next Zapper is http://" + NEXT_SERVER_NAME + ":" + NEXT_SERVER_PORT);
-if (GA_TOKEN) { console.log("GA token is: " + GA_TOKEN); } else { console.log("Not logging to Google Analytics")}
+console.log("Zapper running on port " + ZAP_PORT);
+console.log("Next Zapper is http://" + ZAP_NEXT_SERVER_NAME + ":" + ZAP_NEXT_SERVER_PORT);
+if (ZAP_GA_TOKEN) { console.log("GA token is: " + ZAP_GA_TOKEN); } else { console.log("Not logging to Google Analytics")}

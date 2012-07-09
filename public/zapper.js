@@ -54,7 +54,7 @@ function zap(payload, title) {
 		results += title  + ": " + time2 + " milliseconds</br>";
 		$("#result").html(results); 
 		if (gaToken) {
-			_gaq.push(['_trackEvent', window.location.hostname, title, time2]);
+			$.trackEvent(window.location.hostname, title, "zap", time2);
 		}
 		run += 1;
 		zapRun();
@@ -74,8 +74,10 @@ $(document).ready(function() {
 		nextPort = result.port;		
 		gaToken = result.gaToken;
 
-		if (gaToken) initGoogleAnalytics(gaToken);
-
+		// initialize GA (using the github projects)
+$.fn.track.defaults.debug = true;
+		if (gaToken) $.trackPage('UA-33225197-1');
+		
 		if (!window.location.search) {
 			$("#start").css("display", "inline");
 		} else {
@@ -86,15 +88,3 @@ $(document).ready(function() {
 		}			
 	});
 });
-
-function initGoogleAnalytics(gaToken) {
-	_gaq = _gaq || [];
-	_gaq.push(['_setAccount', gaToken]);
-	_gaq.push(['_trackPageview']);
-
-	(function() {
-		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	})();
-}

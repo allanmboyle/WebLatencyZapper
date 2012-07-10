@@ -48,16 +48,20 @@ function mediumTest() 	{ zap(mediumPayload, 	"medium payload"); }
 function largeTest() 	{ zap(largePayload, 	"large payload"); }
 
 function zap(payload, title) {
-	var time1 = new Date().getTime();
-	$.post("/zap",{startTime: time1, data: payload}, function(result){
-		var time2 = new Date().getTime() - result.startTime;
-		results += title  + ": " + time2 + " milliseconds</br>";
-		$("#result").html(results); 
+	var beforeTime = new Date().getTime();
+	$.post("/zap",{startTime: beforeTime, data: payload}, function(result){
+		var timeTaken = new Date().getTime() - result.startTime;
+		
 		if (gaToken) {
-			$.trackEvent(window.location.hostname, title, "zap", time2);
+			$.trackEvent(window.location.hostname, title, "zap", timeTaken);
+		} else {
+			// report results inline - only if you are not using GA
+			results += title  + ": " + timeTaken + " milliseconds</br>";
+			$("#result").html(results); 
 		}
+		
 		run += 1;
-		zapRun();
+		setTimeout(zapRun, 10); // no need to wait, I just feel better about it.
 	});
 }
 
@@ -75,8 +79,8 @@ $(document).ready(function() {
 		gaToken = result.gaToken;
 
 		// initialize GA (using the github projects)
-$.fn.track.defaults.debug = true;
-		if (gaToken) $.trackPage('UA-33225197-1');
+		//$.fn.track.defaults.debug = true;
+		if (gaToken) $.trackPage('UA-33225197-1', {onload: false});
 		
 		if (!window.location.search) {
 			$("#start").css("display", "inline");

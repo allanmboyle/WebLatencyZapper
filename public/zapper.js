@@ -9,6 +9,7 @@ var smallPayload = [];
 var mediumPayload = [];
 var largePayload = [];
 var results = "";
+var rawResults = [];
 var run = 0;
 var gaToken;
 var nextServer;
@@ -30,9 +31,21 @@ function zapRun() {
 	if (run < runs.length) {
 		runs[run](); // run the test
 	} else {
-		// redirect to the next test, or show the end
+		// send the results to the server, then
+		// redirect to the next test, or show the end.
 		run = 0;
 
+		// $.post("/zapresults", {results: rawResults});
+		
+		$.ajax({
+			type: 'POST',
+			url: "/zapresults",
+			data: JSON.stringify({results: rawResults}),
+			success: function() {},
+			contentType: "application/json",
+			dataType: "json"
+		});
+		
 		if (nextServer == "EOL") {
 			$("#start").css("display", "none");
 			$("#during").css("display", "none");
@@ -51,6 +64,8 @@ function zap(payload, title) {
 	var beforeTime = new Date().getTime();
 	$.post("/zap",{startTime: beforeTime, data: payload}, function(result){
 		var timeTaken = new Date().getTime() - result.startTime;
+		
+		rawResults.push([window.location.hostname, title, timeTaken]);
 		
 		if (gaToken) {
 			$.trackEvent(window.location.hostname, title, "zap", timeTaken);

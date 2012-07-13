@@ -31,6 +31,29 @@ server.post('/zap', function (request, response) {
 	response.send(request.body);
 });
 
+// save the results to file
+server.post('/zapresults', function (request, response) {
+	var fs = require('fs');
+	fs.open('results.txt', 'a', 666, function( e, id ) {
+		for (r in request.body.results) {
+			fs.write( id, getIpAddress(request) + ", " + request.body.results[r] + "\n", null, 'utf8');
+		};
+		fs.close(id);
+	});
+
+	response.send("results recorded");
+});
+
+// handles proxies
+function getIpAddress(request) {
+	//if (request.headers['x-forwarded-for']) {
+	//	return request.headers['x-forwarded-for'];
+	//}
+	return request.connection.remoteAddress;
+}
+
+server.get("/zapstats", function (req, res) { res.sendfile('results.txt'); });
+
 // Serve up the public pages
 server.get('/', function (req, res) { res.sendfile(__dirname + '/public/index.html'); });
 server.get('/zapconfig', function (req, res) { res.send({

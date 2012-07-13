@@ -5,21 +5,34 @@
 	<script type="text/javascript" src="jqga.js"></script> 
 </head>
 <body>
-	<h1> MYOB Performance Test Page </h1>
-	<div id="start" style="width: 50%; display: none">
-		Thank you for agreeing to help us tune the performance of the MYOB Live servers. This test
-		will only take one or two minutes to run. Please refrain from using your computer while the
-		test is in progress.</br>
-		<input type=button value="Start Performance Test" onclick="zapRun()" />
-	</div>
-	<div id="during" style="display: none">
-		Half way there, won't be a moment now...
-	</div>
-	<div id="after" style="display: none">
-		The test is now complete. Thank you for helping to make business life easier. 
-	</div>
-	<div id="result">  </div>
+<div style="background-color: plum; width:10%; height:100%; float: left"> &nbsp;  </div>
+<div style="background-color: plum; width:10%; height:100%; float: right">&nbsp;  </div>
+<div style="background-color: white; height: 100%; text-align: middle; border-width: 2px; border-style:solid">
+	<h2> MYOB Performance Test Page </h2>
 	
+	<div style="float:left; width:50%; margin-left: 10px">
+		<div id="start" style="width: 50%; display: none;">
+			Thank you for helping tune the performance of the MYOB Live servers. This test
+			will only take one or two minutes to run. Click the button below it will let you know when its done. </br> 
+			</br>
+			Thank you form the MYOB Live team.
+			</br></br>
+			
+			<div style="clear:left"> <input type=button value="Start Performance Test" onclick="zapRun()" /> </div>
+		</div>
+		<div id="during" style="display: none">
+			Half way there, won't be a moment now...
+		</div>
+		<div id="after" style="display: none">
+			The test is now complete. Thank you for helping to make business life easier. 
+		</div>
+	</div>
+	<div style="float:right;">
+		<img style="width: 200px" src="myob_logo.jpg" />&nbsp;
+	</div>
+	
+	<div id="result">  </div>
+</div>
 	<script src="zapper.js"></script> 
 </body>
 </html>

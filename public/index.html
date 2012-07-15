@@ -3,6 +3,9 @@
 	<title>Performance Test Page</title>
 	<script type="text/javascript" src="jquery.min.js"></script> 
 	<script type="text/javascript" src="jqga.js"></script> 
+	<!-- This is for some versions of IE that don't have a JSON object built in -->
+	<!-- Its from here: https://github.com/douglascrockford/JSON-js/blob/master/json2.js -->
+	<script type="text/javascript" src="json2.js"></script> 
 </head>
 <body>
 <div style="background-color: plum; width:10%; height:100%; float: left"> &nbsp;  </div>
@@ -18,7 +21,7 @@
 			The MYOB Live team.
 			</br></br>
 			
-			<div style="clear:left"> <input type=button value="Start Performance Test" onclick="zapRun()" /> </div>
+			<div style="clear:left"> <input id=startbutton type=button value="Start Performance Test" onclick="zapRun()" /> </div>
 		</div>
 		<div id="during" style="display: none">
 			Half way there, won't be a moment now...

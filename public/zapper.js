@@ -35,8 +35,7 @@ function zapRun() {
 		// redirect to the next test, or show the end.
 		run = 0;
 
-		// $.post("/zapresults", {results: rawResults});
-		
+		// Post the json version of the results back to the server
 		$.ajax({
 			type: 'POST',
 			url: "/zapresults",
@@ -95,7 +94,7 @@ $(document).ready(function() {
 
 		// initialize GA (using the github projects)
 		//$.fn.track.defaults.debug = true;
-		if (gaToken) $.trackPage('UA-33225197-1', {onload: false});
+		if (gaToken) $.trackPage(gaToken, {onload: false});
 		
 		if (!window.location.search) {
 			$("#start").css("display", "inline");

@@ -44,18 +44,26 @@ function zapRun() {
 			type: 'POST',
 			url: "/zapresults",
 			data: JSON.stringify({results: rawResults}),
-			success: function() {},
-			contentType: "application/json",
-			dataType: "json"
-		});
-		
-		if (nextServer == "EOL") {
-			$("#start").css("display", "none");
-			$("#during").css("display", "none");
-			$("#after").css("display", "inline");
-		} else {
-			window.location.replace("http://" + nextServer + ":" + nextPort + "/?z");
-		}
+			success: function() {
+				if (nextServer == "EOL") {
+					$("#start").css("display", "none");
+					$("#during").css("display", "none");
+					$("#after").css("display", "inline");
+				} else {
+					window.location.replace("http://" + nextServer + ":" + nextPort + "/?z");
+				}
+			},
+			error: function() { 
+				// todo: send a message to the server.
+				$("#start").css("display", "none");
+				$("#during").css("display", "none");
+				$("#after").css("display", "inline");
+				alert("An error has occurred. Sorry for the inconvenience. Thanks for your help."); 
+			},
+			contentType: "application/json"
+			// Removing because it causes the browser ajax call to not be successful
+			// dataType: "json"
+		});		
 	}
 }
 

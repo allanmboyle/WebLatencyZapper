@@ -41,7 +41,7 @@ server.post('/zapresults', function (request, response) {
 		fs.close(id);
 	});
 
-	response.send("results recorded");
+	response.send("{result: performance stats recorded}");
 });
 
 // handles proxies
@@ -49,6 +49,11 @@ function getIpAddress(request) {
 	//if (request.headers['x-forwarded-for']) {
 	//	return request.headers['x-forwarded-for'];
 	//}
+	if (!request.connection.remoteAddress) {
+		console.log("error getting ip address. How about this one? " + request.headers['x-forwarded-for']);
+		console.log(request);
+		return "IP ERROR";
+	}
 	return request.connection.remoteAddress;
 }
 

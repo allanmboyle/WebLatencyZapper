@@ -27,6 +27,10 @@ var runs = [
 ];
 
 function zapRun() {
+	// Disable the start button
+	$("#startbutton").val("Test running. Please wait..");
+	$('#startbutton').attr("disabled", true);
+	
 	// run through each of the tests
 	if (run < runs.length) {
 		runs[run](); // run the test

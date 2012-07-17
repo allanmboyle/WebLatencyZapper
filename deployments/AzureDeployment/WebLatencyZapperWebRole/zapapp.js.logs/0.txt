@@ -1,3 +1,0 @@
-Zapper running on port \\.\pipe\c91156b4-eb71-4b0c-8289-a3ebb4151087
-Next Zapper is http://weblatencyzapperbay.cloudapp.net:80
-Not logging to Google Analytics
